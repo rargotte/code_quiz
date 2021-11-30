@@ -1,0 +1,96 @@
+.container {
+    margin    : 10% 20% 5% 20%;
+    text-align: center;
+
+}
+
+.startButton {
+    background-color: blueviolet;
+    color           : white;
+}
+
+.showQuestion {
+
+    color      : black;
+    margin-top : 10%;
+    text-align : initial;
+    margin-left: 16%;
+    opacity    : 1;
+    z-index    : 2;
+}
+
+.hideQuestion {
+
+    opacity : 0;
+    z-index : 1;
+    position: absolute;
+    left    : 0px;
+    top     : 0px;
+    width   : 100%;
+
+}
+
+.buttonList {
+
+    color      : white;
+    display    : block;
+    margin-top : 2%;
+    margin-left: 16%;
+
+}
+
+.showButton {
+
+    color           : white;
+    background-color: blueviolet;
+    display         : block;
+    border-radius   : 5%;
+    text-align      : initial;
+
+
+}
+
+
+.hideButton {
+
+    opacity : 0;
+    z-index : 1;
+    position: absolute;
+    left    : 0px;
+    top     : 0px;
+    width   : 100%;
+}
+
+.singleButton {
+
+    color           : white;
+    background-color: blueviolet;
+    display         : inline-block;
+    border-radius   : 5%;
+}
+
+.showButton:hover,
+.singleButton:hover {
+
+    background-color: rgb(214, 192, 241);
+
+}
+
+.timer {
+    position: absolute;
+    top     : 10px;
+    right   : 10px;
+
+}
+
+#initials {
+    overflow    : auto;
+    display     : block;
+    margin-right: auto;
+    margin-left : auto;
+}
+
+#resultMessage {
+
+    text-align: initial;
+}
