@@ -68,6 +68,9 @@ function startTimer() {
 
     //Create the element for the timer
     var timerElement = document.createElement("div");
+    timerElement.textContent = "TIME: " + secondsLeft;
+    timerElement.setAttribute("class", "timer");
+    container.prepend(timerElement);
     var timerInterval = setInterval(function () {
         secondsLeft--;
         if (secondsLeft < 0) { secondsLeft = 0 }
@@ -80,7 +83,7 @@ function startTimer() {
             clearInterval(timerInterval);
             //Calls function to end quiz
             endQuiz();
-        }  container.prepend(timerElement);
+        }
     }, 1000)
 }
 function showMessage(string) {
