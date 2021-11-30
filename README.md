@@ -18,6 +18,11 @@ This is a online quiz to have fun with.
 
 Usage
 ------------
+You can access the application by clicking on the following link:
+
+https://rargotte.github.io/code_quiz/
+
+
 The introduction screen will provide some details to start the quiz.
 
 Once you press the start button all you need to do is to select the right answer by clicking on it.

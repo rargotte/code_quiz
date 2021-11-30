@@ -3,7 +3,7 @@ const penalization = 5;
 var startButton = document.querySelector(".startButton");
 var container = document.querySelector(".container");
 var score = 0;
-var secondsLeft = 575;
+var secondsLeft = 75;
 var markup = container.outerHTML;
 
 
@@ -50,7 +50,7 @@ var quiz4 = {
 var quiz = [quiz1, quiz2, quiz3, quiz4];
 
 function initializeVar() {
-    secondsLeft = 1175;
+    secondsLeft = 75;
     score = 0;
     container = document.querySelector(".container");
 };
