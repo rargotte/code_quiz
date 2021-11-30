@@ -5,6 +5,7 @@ var container = document.querySelector(".container");
 var score = 0;
 var secondsLeft = 75;
 var markup = container.outerHTML;
+var quizDone = false;
 
 
 
@@ -53,6 +54,7 @@ function initializeVar() {
     secondsLeft = 75;
     score = 0;
     container = document.querySelector(".container");
+    quizDone = false;
 };
 
 
@@ -68,18 +70,17 @@ function startTimer() {
     var timerElement = document.createElement("div");
     var timerInterval = setInterval(function () {
         secondsLeft--;
-        console.log(secondsLeft);
         if (secondsLeft < 0) { secondsLeft = 0 }
         timerElement.textContent = "TIME: " + secondsLeft;
         timerElement.setAttribute("class", "timer");
-        container.appendChild(timerElement);
+       
 
-        if (secondsLeft === 0) {
+        if (secondsLeft === 0 || quizDone ) {
             //Stops execution of action 
             clearInterval(timerInterval);
             //Calls function to end quiz
             endQuiz();
-        }
+        }  container.prepend(timerElement);
     }, 1000)
 }
 function showMessage(string) {
@@ -125,7 +126,7 @@ function showNextQuestion(active) {
             }
         }
     } else {
-        secondsLeft = 0;
+        quizDone = true;
     }
 }
 
@@ -183,6 +184,7 @@ function renderQuestion() {
     //Create the element for the question
 
     var questionText = "";
+    container = document.querySelector(".container");
 
     for (var i = 0; i < quiz.length; i++) {
         var questionElement = document.createElement("h2");
@@ -195,6 +197,7 @@ function renderQuestion() {
             questionElement.setAttribute("class", "hideQuestion");
         }
         questionElement.setAttribute("data-id", i);
+        console.log(container);
         container.appendChild(questionElement);
 
         //Create the list of buttons for possible answers
@@ -256,6 +259,8 @@ function getInitials() {
     submitInitials.setAttribute("class", "singleButton");
     submitInitialsText = document.createTextNode("Submit");
     submitInitials.appendChild(submitInitialsText);
+
+    
 
     container.prepend(submitInitials);
     container.prepend(textArea);
