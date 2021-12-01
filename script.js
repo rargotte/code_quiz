@@ -76,9 +76,9 @@ function startTimer() {
         if (secondsLeft < 0) { secondsLeft = 0 }
         timerElement.textContent = "TIME: " + secondsLeft;
         timerElement.setAttribute("class", "timer");
-       
 
-        if (secondsLeft === 0 || quizDone ) {
+
+        if (secondsLeft === 0 || quizDone) {
             //Stops execution of action 
             clearInterval(timerInterval);
             //Calls function to end quiz
@@ -200,7 +200,6 @@ function renderQuestion() {
             questionElement.setAttribute("class", "hideQuestion");
         }
         questionElement.setAttribute("data-id", i);
-        console.log(container);
         container.appendChild(questionElement);
 
         //Create the list of buttons for possible answers
@@ -263,7 +262,7 @@ function getInitials() {
     submitInitialsText = document.createTextNode("Submit");
     submitInitials.appendChild(submitInitialsText);
 
-    
+
 
     container.prepend(submitInitials);
     container.prepend(textArea);
@@ -271,23 +270,49 @@ function getInitials() {
     container.prepend(yourFinalScore);
     container.prepend(allDoneElement);
 
+
     var saveButton = document.getElementById("save");
     saveButton.addEventListener("click", function (event) {
         event.preventDefault();
-
-        var currentUser = {
-            grade: score,
-            initials: textArea.value
-        }
+        var currentUser = [textArea.value, score];
+        var currentUserInserted = false;
         var userGrade = JSON.parse(localStorage.getItem("userGrade"));
-        if ((userGrade == null) || (userGrade !== null && userGrade.grade < score)) {
+
+        if (userGrade == null) { /* score is empty */
 
             localStorage.setItem("userGrade", JSON.stringify(currentUser));
+            currentUserInserted = true;
+
+        } else {
+            var userGradeLength = userGrade.length;
+            var i = 1;
+
+            while (!currentUserInserted && i < userGradeLength) {
+
+
+                if (i % 2 !== 0) {
+                    /* The element of the array is a score*/
+                    if ((userGrade.at(i)) <= score) {
+                        console.log(userGrade.at(i));
+                        console.log(score);
+                        console.log(i);
+                        userGrade.splice((i-1), 0, textArea.value, score);
+                        currentUserInserted = true;
+                    }
+                }
+                i = i + 1;
+            } if (!currentUserInserted) {
+                userGrade.push(textArea.value, score);
+                currentUserInserted = true;
+            }
+
+            localStorage.setItem("userGrade", JSON.stringify(userGrade));
         }
         showScore();
     })
 
 }
+
 
 
 
@@ -302,10 +327,17 @@ function showScore() {
 
     var highGrade = JSON.parse(localStorage.getItem("userGrade"));
     if (highGrade !== null) {
-        var highScoreElement = document.createElement("h3");
-        highScoreText = document.createTextNode(highGrade.initials + "   " + highGrade.grade);
-        highScoreElement.appendChild(highScoreText);
-        container.appendChild(highScoreElement);
+        var i = 0;
+        highGradeLength = highGrade.length;
+        while (i < highGradeLength) {
+
+            var highScoreElement = document.createElement("h3");
+            highScoreText = document.createTextNode(highGrade[i] + "   " + highGrade[i + 1]);
+            highScoreElement.appendChild(highScoreText);
+            container.appendChild(highScoreElement);
+
+            i = i + 2;
+        }
     }
 
     var buttonBack = document.createElement("button");
