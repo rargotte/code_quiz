@@ -392,8 +392,7 @@ function startQuiz() {
 function resetQuiz() {
     var bodyElement = document.querySelector('body');
     container.remove();
-    originalBody = markup + bodyElement.outerHTML;
-    bodyElement.outerHTML = originalBody;
+    bodyElement.innerHTML = markup;
     startButton = document.querySelector(".startButton");
     startButton.addEventListener("click", function (event) {
         event.preventDefault();
