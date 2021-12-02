@@ -293,9 +293,6 @@ function getInitials() {
                 if (i % 2 !== 0) {
                     /* The element of the array is a score*/
                     if ((userGrade.at(i)) <= score) {
-                        console.log(userGrade.at(i));
-                        console.log(score);
-                        console.log(i);
                         userGrade.splice((i-1), 0, textArea.value, score);
                         currentUserInserted = true;
                     }
