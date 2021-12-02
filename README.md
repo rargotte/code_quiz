@@ -33,17 +33,17 @@ You can delete the score board or go back to start the same quiz again.
 
 Here is the starting screen:
 
-<img src= "img/start.jpg" alt= "Starting screen">
+<img src= "assets/img/start.jpg" alt= "Starting screen">
 
 This is one of the questions of the quiz. Once you provide your answer the next screen will show the next question and the result of your answer.
 
 
-<img src= "img/1st Question.png" alt= "Screen with 1st Question">
+<img src= "assets/img/1st Question.png" alt= "Screen with 1st Question">
 
 Here the application shows your score and asks for your inititals.
 Please provide and then select the go back button to re-start the quiz or "Clear Scores" to initialize the score board.
 
-<img src= "img/scorescreen.jpg" alt= "Screen with the result of your score">
+<img src= "assets/img/scorescreen.jpg" alt= "Screen with the result of your score">
 
 If you want to add more questions and answer is very easy:
 

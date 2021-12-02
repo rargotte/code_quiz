@@ -8,7 +8,7 @@ var markup = container.outerHTML;
 var quizDone = false;
 
 
-
+/*Create one object per question*/
 var quiz1 = {
     question: "Inside which HTML element do we put the JavaScript?",
     answers: {
@@ -47,9 +47,10 @@ var quiz4 = {
     },
     correctAnswer: "b_2",
 };
-
+/*Add the object into the array to include in the quiz*/
 var quiz = [quiz1, quiz2, quiz3, quiz4];
 
+/*Initialization of all variables*/
 function initializeVar() {
     secondsLeft = 75;
     score = 0;
@@ -86,6 +87,8 @@ function startTimer() {
         }
     }, 1000)
 }
+
+/*Function to show message "Correct" or "Wrong" */
 function showMessage(string) {
     var inactiveMessage = document.getElementsByName("resultMessage");
     for (var i = 0; i < inactiveMessage.length; i++) {
@@ -103,6 +106,7 @@ function showMessage(string) {
     container.appendChild(lineElement);
 }
 
+/*Function to show or hide questions*/
 function showNextQuestion(active) {
     var allQuestionsAndAnswers = document.querySelectorAll('[data-id]');
     nextQuestion = 1 + parseInt(active, 10);
@@ -133,6 +137,7 @@ function showNextQuestion(active) {
     }
 }
 
+/*Function to handle user events*/
 function handleUserAnswer(userEvent) {
     var userInput = userEvent.target;
 
@@ -160,7 +165,6 @@ function handleUserAnswer(userEvent) {
 }
 
 
-
 //Function to get user input
 function getUserAnswers(listClass) {
     var buttonLists = document.getElementsByClassName(listClass);
@@ -179,10 +183,7 @@ function getUserAnswers(listClass) {
     }
 }
 
-
-
-
-
+/*Function to render all questions but only shows the first one*/
 function renderQuestion() {
     //Create the element for the question
 
@@ -231,6 +232,7 @@ function renderQuestion() {
 
 }
 
+/*Function to delete questions and answers from HTML*/
 function deleteQuestionsandAnswers() {
     var eraseQuestions = document.querySelectorAll('[data-id]');
     for (var i = 0; i < eraseQuestions.length; i++) {
@@ -311,10 +313,7 @@ function getInitials() {
 }
 
 
-
-
-
-
+/*Function to show the final list of scores*/
 function showScore() {
     cleanupScreen();
     var titleScoresElement = document.createElement("h2");
@@ -360,18 +359,11 @@ function showScore() {
 
 }
 
-function clearScores() {
 
+function clearScores() {
     localStorage.clear("userGrade");
     showScore();
-
-
 }
-
-
-
-
-
 
 //Function to end Quiz
 function endQuiz() {
